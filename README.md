@@ -41,7 +41,16 @@ And this package convert to this.
 
 ## Usage
 
-With axios
+### Install
+
+```bash
+# yarn
+$ yarn add convert-laravel-validation
+# npm
+$ npm install convert-laravel-validation
+```
+
+### With axios
 
 ```js
 import { convertValidationError } from 'convert-laravel-validation'
