@@ -67,3 +67,4 @@ typings/
 .idea/
 
 nohup.out
+lib/

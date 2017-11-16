@@ -1,18 +1,20 @@
 {
   "name": "convert-laravel-validation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert validation message from laravel to javascript object",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:reno-shelter/convert-laravel-validation.git",
   "author": "kotamat <kota1861@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "babel src --out-dir lib",
     "test": "ava"
   },
   "devDependencies": {
     "ava": "^0.23.0",
     "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0"
   },
