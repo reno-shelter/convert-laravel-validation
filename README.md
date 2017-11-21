@@ -39,6 +39,29 @@ And this package convert to this.
 }
 ```
 
+You can set default value 2nd argument
+
+ex) The error contains 2 elements of array, but application treats 3 elements of array
+
+```json
+{
+  "staff": {
+    "0": {
+      "name": ["The name field is required."],
+      "id": ["The id field is required."],
+    },
+    "1": {
+      "name": ["The name field is required."],
+      "id": ["The id field is required."],
+    },
+    "2": {
+      "name": [""],
+      "id": [""],
+    }
+  }
+}
+```
+
 ## Usage
 
 ### Install
@@ -61,6 +84,8 @@ async fetch() {
     // ...
   } catch (err){
     const errMsg = convertValidationError(err)
+    // or
+    const errMsg = convertValidationError(err, defaultErrMsg)
     // ...
   }
 }
