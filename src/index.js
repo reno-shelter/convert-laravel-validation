@@ -1,10 +1,11 @@
 /**
  * Validation error converter
  * @param err object
+ * @param defaultErrMsg
  * @returns object
  */
-export const convertValidationError = (err) => {
-  let errMsg = {}
+export const convertValidationError = (err, defaultErrMsg = {}) => {
+  let errMsg = defaultErrMsg
   if (err.response.status === 422) {
     for (let key of Object.keys(err.response.data.errors)) {
       const splited = key.split('.')

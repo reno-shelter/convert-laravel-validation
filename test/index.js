@@ -67,6 +67,54 @@ test('convert nested iterative errors', t => {
   })
 })
 
+test('convert nested iterative errors with default errMsg', t => {
+  const err = {
+    response: {
+      status: 422,
+      data: {
+        errors: {
+          'staff.0.id': ['The id field is required.'],
+          'staff.0.name': ['The name field is required.'],
+          'staff.1.id': ['The id field is required.'],
+          'staff.1.name': ['The name field is required.'],
+        },
+      },
+    },
+  }
+  const defaultErrMsg = {
+    staff: {
+      0: {
+        name: [''],
+        id: [''],
+      },
+      1: {
+        name: [''],
+        id: [''],
+      },
+      2: {
+        name: [''],
+        id: [''],
+      },
+    },
+  }
+  t.deepEqual(convertValidationError(err, defaultErrMsg), {
+    staff: {
+      0: {
+        name: ['The name field is required.'],
+        id: ['The id field is required.'],
+      },
+      1: {
+        name: ['The name field is required.'],
+        id: ['The id field is required.'],
+      },
+      2: {
+        name: [''],
+        id: [''],
+      },
+    },
+  })
+})
+
 test('convert various errors', t => {
   const err = {
     response: {
