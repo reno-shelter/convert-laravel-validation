@@ -6,16 +6,14 @@
  */
 export const convertValidationError = (err, defaultErrMsg = {}) => {
   let errMsg = defaultErrMsg
-  if (err.response.status === 422) {
-    for (let key of Object.keys(err.response.data.errors)) {
-      const splited = key.split('.')
-      const reduced = splited.reduceRight((pre, cur) => {
-        let obj = {}
-        obj[cur] = pre
-        return obj
-      }, err.response.data.errors[key])
-      mergeDeep(errMsg, reduced)
-    }
+  for (let key of Object.keys(err)) {
+    const splited = key.split('.')
+    const reduced = splited.reduceRight((pre, cur) => {
+      let obj = {}
+      obj[cur] = pre
+      return obj
+    }, err[key])
+    mergeDeep(errMsg, reduced)
   }
   return errMsg
 }
