@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 /**
  * Validation error converter
  * @param err object
